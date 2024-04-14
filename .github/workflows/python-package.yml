@@ -27,7 +27,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Format with black
-      run: black .
+      run: black --check .
       
     - name: Lint with flake8
       run: flake8 . --max-line-length=120 --statistics
