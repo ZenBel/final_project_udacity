@@ -1,20 +1,20 @@
 Performance metrics for workclass = Private:
-Precision: 0.6878453038674033, Recall: 0.2634920634920635, F-1: 0.38102524866105586
+Precision: 0.6792452830188679, Recall: 0.26059979317476734, F-1: 0.37668161434977576
 
 Performance metrics for workclass = Federal-gov:
-Precision: 0.7241379310344828, Recall: 0.25, F-1: 0.37168141592920356
-
-Performance metrics for workclass = Local-gov:
-Precision: 0.65, Recall: 0.18571428571428572, F-1: 0.28888888888888886
+Precision: 0.8, Recall: 0.21505376344086022, F-1: 0.3389830508474576
 
 Performance metrics for workclass = Self-emp-not-inc:
-Precision: 0.6981132075471698, Recall: 0.26811594202898553, F-1: 0.38743455497382207
+Precision: 0.7288135593220338, Recall: 0.2670807453416149, F-1: 0.3909090909090909
 
 Performance metrics for workclass = State-gov:
-Precision: 0.7333333333333333, Recall: 0.3492063492063492, F-1: 0.4731182795698924
+Precision: 0.6923076923076923, Recall: 0.1267605633802817, F-1: 0.21428571428571425
+
+Performance metrics for workclass = Local-gov:
+Precision: 0.6521739130434783, Recall: 0.23622047244094488, F-1: 0.3468208092485549
 
 Performance metrics for workclass = Self-emp-inc:
-Precision: 0.9130434782608695, Recall: 0.31343283582089554, F-1: 0.4666666666666668
+Precision: 0.9512195121951219, Recall: 0.375, F-1: 0.5379310344827586
 
 Performance metrics for workclass = Without-pay:
 Precision: 1.0, Recall: 1.0, F-1: 1.0
