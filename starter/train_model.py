@@ -2,9 +2,8 @@
 
 from sklearn.model_selection import train_test_split
 from ml.data import process_data
-from ml.model import train_model, compute_model_metrics, inference
+from ml.model import train_model, compute_model_metrics, inference, save_model
 import pandas as pd
-import pickle
 
 # Load the cleaned data
 data = pd.read_csv("../data/census_cleaned.csv")
@@ -29,11 +28,10 @@ X_train, y_train, encoder, lb = process_data(
     train, categorical_features=cat_features, label="salary", training=True
 )
 print("Processed data for model training")
+
 # Save categorical encoder and label binarizer
-with open("../model/encoder.pkl", "wb") as f:
-    pickle.dump(encoder, f)
-with open("../model/label_binarizer.pkl", "wb") as f:
-    pickle.dump(lb, f)
+save_model(encoder, "../model/encoder.pkl")
+save_model(lb, "../model/label_binarizer.pkl")
 print("Saved encoder and label binarizer to model folder")
 
 X_valid, y_valid, e_, lb_ = process_data(
@@ -55,6 +53,5 @@ y_preds = inference(trained_model, X_valid)
 p, r, f = compute_model_metrics(y_valid, y_preds)
 print(f"Precision: {p}, Recall: {r}, F-1: {f}")
 
-with open("../model/model.pkl", "wb") as f:
-    pickle.dump(trained_model, f)
+save_model(trained_model, "../model/model.pkl")
 print("Saved trained model to model folder")

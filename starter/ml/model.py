@@ -1,5 +1,6 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
+import pickle
 
 
 # Optional: implement hyperparameter tuning.
@@ -59,3 +60,31 @@ def inference(model, X):
         Predictions from the model.
     """
     return model.predict(X)
+
+
+def load_model(filepath):
+    """Load a persisted model from a file.
+
+    Args:
+        filepath (str): path to the persisted model file
+
+    Raises:
+        Exception: "Model file must be a .pkl file"
+    Returns:
+        _type_ : trained model or encoder or label binarizer
+    """
+    if filepath.endswith(".pkl"):
+        return pickle.load(open(filepath, "rb"))
+    else:
+        raise Exception("Model file must be a .pkl file")
+
+
+def save_model(model, filepath):
+    """Save a trained model.
+
+    Args:
+        model (): trained model or encoder or label binarizer
+        filepath (str): path where to save the model
+    """
+    with open(filepath, "wb") as f:
+        pickle.dump(model, f)
