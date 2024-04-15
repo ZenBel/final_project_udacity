@@ -1,6 +1,7 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
 import pickle
+from .data import process_data
 
 
 # Optional: implement hyperparameter tuning.
@@ -21,6 +22,25 @@ def train_model(X_train, y_train):
     """
 
     return LogisticRegression().fit(X_train, y_train)
+
+
+def compute_metrics_by_slice(data, feature, cat_features, label, model, encoder, lb):
+    unique_values = data[feature].unique()
+    with open("../data/slice_output.txt", "w") as f:
+        for value in unique_values:
+            slice_data = data[data[feature] == value]
+            X_slice, y_slice, _, _ = process_data(
+                slice_data,
+                categorical_features=cat_features,
+                label=label,
+                training=False,
+                encoder=encoder,
+                lb=lb,
+            )
+            y_preds = inference(model, X_slice)
+            p, r, f1 = compute_model_metrics(y_slice, y_preds)
+            f.write(f"Performance metrics for {feature} = {value}:\n")
+            f.write(f"Precision: {p}, Recall: {r}, F-1: {f1}\n\n")
 
 
 def compute_model_metrics(y, preds):

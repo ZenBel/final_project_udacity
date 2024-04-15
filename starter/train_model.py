@@ -2,7 +2,13 @@
 
 from sklearn.model_selection import train_test_split
 from ml.data import process_data
-from ml.model import train_model, compute_model_metrics, inference, save_model
+from ml.model import (
+    train_model,
+    compute_model_metrics,
+    inference,
+    save_model,
+    compute_metrics_by_slice,
+)
 import pandas as pd
 
 # Load the cleaned data
@@ -52,6 +58,18 @@ print("Trained model")
 y_preds = inference(trained_model, X_valid)
 p, r, f = compute_model_metrics(y_valid, y_preds)
 print(f"Precision: {p}, Recall: {r}, F-1: {f}")
+
+# Compute metrics by slice
+compute_metrics_by_slice(
+    data=test,
+    feature="workclass",
+    cat_features=cat_features,
+    label="salary",
+    model=trained_model,
+    encoder=encoder,
+    lb=lb,
+)
+print("Computed model metrics for slice workclass")
 
 save_model(trained_model, "../model/model.pkl")
 print("Saved trained model to model folder")
