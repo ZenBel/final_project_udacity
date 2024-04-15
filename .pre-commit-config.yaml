@@ -12,10 +12,9 @@ repos:
         entry: flake8
         language: system
 
-  # - repo: https://github.com/pytest-dev/pytest
-  #   rev: 8.1.1
-  #   hooks:
-  #     - id: pytest
-  #       name: pytest
-  #       entry: pytest
-  #       language: system
+  - repo: local
+    hooks:
+      - id: pytest-check
+        name: pytest-check
+        entry: bash -c 'pytest'
+        language: system
