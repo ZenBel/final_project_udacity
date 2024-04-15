@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
-from .ml.model import compute_model_metrics, inference
-from .ml.data import process_data
+from starter.ml.model import compute_model_metrics, inference
+from starter.ml.data import process_data
 
 
 def test_compute_model_metrics_type():
