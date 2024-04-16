@@ -1,3 +1,4 @@
 sanitycheck.py
 model/
 __pycache__/
+tmp_*
