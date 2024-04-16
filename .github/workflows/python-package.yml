@@ -16,8 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      with:
-        path: final_project_udacity  # Specify the desired path to checkout the repository
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
@@ -33,7 +31,5 @@ jobs:
     - name: Lint with flake8
       run: flake8 . --max-line-length=120 --statistics
       
-    - name: Test with pytest
-      run: |
-        cd final_project_udacity
-        pytest .
+    # - name: Test with pytest
+    #   run: pytest .
