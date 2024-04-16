@@ -90,7 +90,7 @@ async def inference_endpoint(request: InferenceRequest):
                 "sex": request.sex,
                 "capital_gain": request.capital_gain,
                 "capital_loss": request.capital_loss,
-                "hours_per_week": request.hoours_per_week,
+                "hours_per_week": request.hours_per_week,
                 "native_country": request.native_country,
                 "salary": request.salary,
             }
