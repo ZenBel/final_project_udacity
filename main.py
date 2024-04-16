@@ -73,7 +73,28 @@ async def root():
 # POST request handler for model inference
 @app.post("/infer/")
 async def inference_endpoint(request: InferenceRequest):
-    df = pd.DataFrame(json.loads(request.json()))
+    try:
+        df = pd.DataFrame(json.loads(request.json()))
+    except Exception:
+        df = pd.DataFrame(
+            {
+                "age": request.age,
+                "workclass": request.workclass,
+                "fnlgt": request.fnlgt,
+                "education": request.education,
+                "education_num": request.education_num,
+                "marital_status": request.marital_status,
+                "occupation": request.occupation,
+                "relationship": request.relationship,
+                "race": request.race,
+                "sex": request.sex,
+                "capital_gain": request.capital_gain,
+                "capital_loss": request.capital_loss,
+                "hours_per_week": request.hoours_per_week,
+                "native_country": request.native_country,
+                "salary": request.salary,
+            }
+        )
 
     encoder = load_model("./model/encoder.pkl")
     lb = load_model("./model/label_binarizer.pkl")
